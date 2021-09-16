@@ -1,35 +1,42 @@
 
-var fallDown = 50;
-var superContract = 65;
-var contract = 80;
-var budjet = 100;
+var fallDown = 50;  // ...gacha
+var superContract = 65; // ...gacha
+var contract = 80; // ...gacha
+var budjet = 100; // 100 va ...gacha
 var elForm = document.querySelector(".form-dtm");
-var elResult = document.querySelector(".result")
-var elCheck = document.querySelector('.check-js');
+
 
 
     elForm.addEventListener('submit', function (evt) {
         evt.preventDefault();
         
-        var input = elForm.querySelector('.input-js').value;
-       
-        if (elCheck.checked) {
-            elResult.textContent = 'imtiyozli talaba';
-        } 
-        else if (input < fallDown) {
-            elResult.textContent = 'talabalikka tavsiya etilmadingiz';
-        } 
-        else if (input < superContract) {
+        var input = parseFloat(elForm.querySelector('.input-js').value);
+        console.log(typeof input);
+        console.log(input);
+        var elResult = document.querySelector(".result");
+        var elResultBox =document.querySelector('.result-box');
+        var elCheck = document.querySelector('.check-js').checked;
+        elResultBox.classList.remove("bg-light");
+        if (isNaN(input)) {
+            elResult.textContent = 'Raqam kirit';
+            elResultBox.classList.add("warning");
+        }
+        else if (input >= contract || elCheck) {
+           elResult.textContent = 'Grant asosida o\'qishga qabul qilindingiz';
+           elResultBox.classList.add("sucsess");
+        } else if (input < contract && input >= superContract) {
+        elResult.textContent = 'kontrakt asosida o\'qishga qabul qilindingiz';
+        elResultBox.classList.add("warning");
+        } else if (input < superContract && input >= fallDown) {
             elResult.textContent = 'super kontrakt asosida o\'qishga qabul qilindingiz';
-        }
-        else if (input < contract) 
-        {
-            elResult.textContent = 'kontrakt asosida o\'qishga qabul qilindingiz';
-        }
-        else  {
-            elResult.textContent ='grant asosida o\'qishga qabul qilindingiz'
-        }
-       
+            elResultBox.classList.add("warning");
+        } else if (input < 0) {
+            elResult.textContent = '0 va undan katta qiymat kiriting';
+            elResultBox.classList.add("danger");
+        } else {
+            elResult.textContent = 'talabalikka tavsiya etilmadingiz';
+            elResultBox.classList.add("danger");
+        } 
     })
 
 

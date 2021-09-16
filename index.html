@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
     <div class="container">
         <h1 class="h1 text-center bg-warning text-uppercase text-muted my-5">dtm</h1>
        <div class="row">
-           <div class="col"></div>
-           <div class="col-8">
+    
+           <div class="col-6">
             <form action="https://echo.htmkacademy.ru" method="POST" class="form-dtm">
             <label for="input-id" class="form-label h4 text-capitalize text-muted">to'plagan balingizni kiriting</label>
-            <input type="number" name="form-ball" id="input-id" class="form-control mb-4 input-js" min="0" max="100">
+            <input  max="100" name="form-ball" id="input-id" class="form-control mb-4 input-js">
             
             <input type="checkbox" name="form_check" id="check-id" class="form-check-input check-js">
             <label for="check-id" class="form-check-label h6 text-capitalize text-muted">Imtiyoz asosida</label>
@@ -23,9 +24,24 @@
             <button type="submit" class="btn btn-warning text-uppercase">submit</button>
         </form>
         
-        <div class="bg-warning border border-1 border-primary  text-center mt-4">
-            <output class="result h4 text-uppercase m-0 my-3"></output></div></div>
-           <div class="col"></div>
+        <div class="bg-light border border-1 border-primary mt-4 d-flex  align-items-center justify-content-center result-box" style="height: 150px;">
+            <output class="result h3 text-uppercase m-0 d-block text-center text-white"></output>
+        </div>
+    </div>
+            <div class="col-2"></div>
+            <div class="col-4 mt-5">
+                <dl>
+                    <dt>O'tish ball :</dt>
+                    <dd class="bg-danger text-white h5 m-0 p-1 text-center"> 50 ball</dd>
+                    <dt class="">Super kontrakt :</dt>
+                    <dd class="bg-warning text-white h5 m-0 p-1 text-center"> 50 - 64</dd>
+                    <dt class="">Kontrakt :</dt>
+                    <dd class="bg-warning text-white h5 m-0 p-1 text-center"> 65 - 80 </dd>
+                    <dt class="">Grant :</dt>
+                    <dd class="bg-success text-white h5 m-0 p-1 text-center"> 80 - 100</dd>
+ 
+                </dl>
+            </div>
        </div>
     </div>
 

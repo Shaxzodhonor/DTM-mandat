@@ -5,41 +5,45 @@ var contract = 80; // ...gacha
 var budjet = 100; // 100 va ...gacha
 var elForm = document.querySelector(".form-dtm");
 
+var input = elForm.querySelector('.input-js');
+var elResult = document.querySelector(".result");
+var elResultBox =document.querySelector('.result-box');
+var elCheck = document.querySelector('.check-js');
 
 
-    elForm.addEventListener('submit', function (evt) {
-        evt.preventDefault();
-        
-        var input = parseFloat(elForm.querySelector('.input-js').value);
-        console.log(typeof input);
-        console.log(input);
-        var elResult = document.querySelector(".result");
-        var elResultBox =document.querySelector('.result-box');
-        var elCheck = document.querySelector('.check-js').checked;
-        elResultBox.classList.remove("bg-light");
-        if (input >= contract && input <= 100 || elCheck) {
-            elResult.textContent = 'Grant asosida o\'qishga qabul qilindingiz';
+elForm.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    var checked = elCheck.checked;
+    var score = parseFloat(input.value);
+    var message;
+    elResultBox.classList.remove("bg-light", "sucsess", "warning", "danger");
+
+
+        if (score >= contract && score <= 100 || checked) {
+            message = 'Grant asosida o\'qishga qabul qilindingiz';
             elResultBox.classList.add("sucsess");
-         } else if (isNaN(input)) {
-            elResult.textContent = 'Raqam kirit';
+        
+         } else if (isNaN(score)) {
+            message = 'Raqam kirit';
             elResultBox.classList.add("warning");
         }
-        else if (input < contract && input >= superContract) {
-        elResult.textContent = 'kontrakt asosida o\'qishga qabul qilindingiz';
+        else if (score < contract && score >= superContract) {
+        message = 'kontrakt asosida o\'qishga qabul qilindingiz';
         elResultBox.classList.add("warning");
-        } else if (input < superContract && input >= fallDown) {
-            elResult.textContent = 'super kontrakt asosida o\'qishga qabul qilindingiz';
+        } else if (score < superContract && score >= fallDown) {
+            message = 'super kontrakt asosida o\'qishga qabul qilindingiz';
             elResultBox.classList.add("warning");
-        } else if (input < 0) {
-            elResult.textContent = '0 va undan katta qiymat kiriting';
+        } else if (score < 0) {
+            message = '0 va undan katta qiymat kiriting';
             elResultBox.classList.add("danger");
-        } else if (input > 100) {
-            elResult.textContent = '100 eng yuqori ball';
+        } else if (score > 100) {
+            message = '100 eng yuqori ball';
             elResultBox.classList.add("danger");
         }else {
-            elResult.textContent = 'talabalikka tavsiya etilmadingiz';
+            message = 'talabalikka tavsiya etilmadingiz';
             elResultBox.classList.add("danger");
         } 
+        elResult.textContent = message;
     })
 
 

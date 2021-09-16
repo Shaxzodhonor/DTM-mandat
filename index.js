@@ -17,14 +17,14 @@ var elForm = document.querySelector(".form-dtm");
         var elResultBox =document.querySelector('.result-box');
         var elCheck = document.querySelector('.check-js').checked;
         elResultBox.classList.remove("bg-light");
-        if (isNaN(input)) {
+        if (input >= contract && input <= 100 || elCheck) {
+            elResult.textContent = 'Grant asosida o\'qishga qabul qilindingiz';
+            elResultBox.classList.add("sucsess");
+         } else if (isNaN(input)) {
             elResult.textContent = 'Raqam kirit';
             elResultBox.classList.add("warning");
         }
-        else if (input >= contract || elCheck) {
-           elResult.textContent = 'Grant asosida o\'qishga qabul qilindingiz';
-           elResultBox.classList.add("sucsess");
-        } else if (input < contract && input >= superContract) {
+        else if (input < contract && input >= superContract) {
         elResult.textContent = 'kontrakt asosida o\'qishga qabul qilindingiz';
         elResultBox.classList.add("warning");
         } else if (input < superContract && input >= fallDown) {
@@ -33,7 +33,10 @@ var elForm = document.querySelector(".form-dtm");
         } else if (input < 0) {
             elResult.textContent = '0 va undan katta qiymat kiriting';
             elResultBox.classList.add("danger");
-        } else {
+        } else if (input > 100) {
+            elResult.textContent = '100 eng yuqori ball';
+            elResultBox.classList.add("danger");
+        }else {
             elResult.textContent = 'talabalikka tavsiya etilmadingiz';
             elResultBox.classList.add("danger");
         } 
